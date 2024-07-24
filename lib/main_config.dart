@@ -17,6 +17,10 @@ Future<void> prepareAppConfigAsync() async {
   final wb = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: wb);
 
+  // await Firebase.initializeApp(
+    // options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  
   InternetInfo.initState;
   await Future.wait([
     configureDependencies(),

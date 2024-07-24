@@ -19,9 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
   final IAuthRepository _repo;
   AuthCubit(this._repo) : super(const AuthState.initial());
 
-  void reset() {
-  }
-
+  void reset() {}
 
   Future<void> tryLoginUser() async {
     emit(const AuthState.loading());

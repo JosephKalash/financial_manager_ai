@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:ai_financial_manager/core/logical/abstract/models.dart';
 import 'package:ai_financial_manager/core/logical/enums/login_type.dart';
 
-import '../../../../core/logical/abstract/repository_mixin.dart';
+import '../../../../core/logical/abstract/repository.dart';
 import '../../../../core/logical/errors/failures.dart';
 import '../../domain/models/auth_params.dart';
 import '../../domain/models/user.dart';
