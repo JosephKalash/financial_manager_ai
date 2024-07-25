@@ -1,4 +1,3 @@
-import 'package:ai_financial_manager/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';

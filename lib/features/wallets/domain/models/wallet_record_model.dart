@@ -1,16 +1,17 @@
+
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
-import 'package:ai_financial_manager/core/utils/funcs.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:isar/isar.dart';
 
-part 'plan_record_model.g.dart';
+part 'wallet_record_model.g.dart';
 
 @collection
-class PlanRecordModel extends MoneyRecordABS {
-  double badgetOnRecordTime;
-  PlanRecordModel({
+class WalletRecordModel extends MoneyRecordABS {
+  double amountOnRecordTime;
+  WalletRecordModel({
     required super.amount,
     super.createdAt_,
-    required this.badgetOnRecordTime,
+    required this.amountOnRecordTime,
   });
 
   @override
@@ -28,6 +29,6 @@ class PlanRecordModel extends MoneyRecordABS {
 
   @override
   String getLabel() {
-    return formatDate(createdAt, pattern: 'd/M/y');
+    return 'update_balance'.tr();
   }
 }

@@ -17,7 +17,7 @@ class WalletsPage extends StatelessWidget {
 }
 
 class _PageContent extends StatefulWidget {
-  const _PageContent({super.key});
+  const _PageContent();
 
   @override
   State<_PageContent> createState() => __PageContentState();

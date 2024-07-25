@@ -1,3 +1,4 @@
+import 'package:ai_financial_manager/core/utils/funcs.dart';
 import 'package:isar/isar.dart';
 
 /// Id id = Isar.autoIncrement;
@@ -5,12 +6,16 @@ import 'package:isar/isar.dart';
 /// String? note;
 abstract class MoneyRecordABS {
   Id id = Isar.autoIncrement;
-  DateTime createdOn;
+  DateTime createdAt;
   String? note;
   double amount;
-  MoneyRecordABS({DateTime? createdOn_, this.note, required this.amount}) : createdOn = createdOn_ ?? DateTime.now();
+  MoneyRecordABS({DateTime? createdAt_, this.note, required this.amount}) : createdAt = createdAt_ ?? DateTime.now();
 
   String getIcon();
   String getAmount();
   String getLabel();
+
+  String getCreatedAt() {
+    return formatDate(createdAt, pattern: 'd/M/y');
+  }
 }

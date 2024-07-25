@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'core/UI/router/router.gr.dart';
+import 'core/UI/router/router.dart';
 import 'core/utils/lang.dart';
 import 'core/utils/size_config.dart';
 import 'features/authentication/presentation/cubit/auth_cubit.dart';
 
+@RoutePage() 
 class InitPage extends StatefulWidget {
   const InitPage();
   @override

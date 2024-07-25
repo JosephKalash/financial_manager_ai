@@ -1,10 +1,10 @@
-import 'package:ai_financial_manager/core/UI/router/router.gr.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/UI/router/router.dart';
 import 'core/UI/styles/colors.dart';
 import 'core/utils/lang.dart';
 import 'features/authentication/presentation/cubit/auth_cubit.dart';
@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
   static final _navKey = GlobalKey<NavigatorState>();
-  static final AppRouter appRouter = AppRouter(_navKey);
+  static final AppRouter appRouter = AppRouter(navigatorKey: _navKey);
   static BuildContext get context => appRouter.navigatorKey.currentState!.context;
   @override
   State<MyApp> createState() => _MyAppState();
@@ -68,11 +68,10 @@ class _MyAppState extends State<MyApp> {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               theme: ThemeData(
-                useMaterial3: true,
                 fontFamily: 'Poppins',
                 primaryColor: AppColors.primary,
                 scaffoldBackgroundColor: AppColors.backgroundColor,
-                dialogTheme: DialogTheme.of(context).copyWith(surfaceTintColor: AppColors.white),
+                // dialogTheme: DialogTheme.of(context).copyWith(surfaceTintColor: AppColors.white),
                 colorScheme: const ColorScheme.light().copyWith(primary: AppColors.primary),
               ),
             );

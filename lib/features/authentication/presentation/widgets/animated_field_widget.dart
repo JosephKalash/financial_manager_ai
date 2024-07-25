@@ -3,10 +3,10 @@ import '../../../../index.dart';
 
 class AnimatedField extends StatelessWidget {
   const AnimatedField({
-    Key? key,
+    super.key,
     required this.isRegister,
     required this.child,
-  }) : super(key: key);
+  });
 
   final bool isRegister;
   final Widget child;

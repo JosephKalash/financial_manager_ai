@@ -1,4 +1,4 @@
-import 'package:ai_financial_manager/core/UI/router/router.gr.dart';
+import 'package:ai_financial_manager/core/UI/router/router.dart';
 import 'package:ai_financial_manager/index.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +12,7 @@ import '../../domain/models/auth_params.dart';
 import '../cubit/auth_cubit.dart';
 import '../widgets/animated_field_widget.dart';
 
+@RoutePage() 
 class LoginPage extends StatefulWidget {
   const LoginPage();
 

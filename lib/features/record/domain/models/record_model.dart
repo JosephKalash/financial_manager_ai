@@ -6,32 +6,32 @@ import '../../../../core/logical/abstract/money_record_abs.dart';
 part 'record_model.g.dart';
 
 @collection
-class Record extends MoneyRecordABS {
-  final cateogry = IsarLink<CategoryModel>();
+class RecordModel extends MoneyRecordABS {
+  final category = IsarLink<CategoryModel>();
   bool isRecurring;
 
-  Record({
+  RecordModel({
     required super.amount,
     this.isRecurring = false,
-    super.createdOn_,
+    super.createdAt_,
     super.note,
   });
 
   @override
   String getAmount() {
-    // TODO: implement getAmount
-    throw UnimplementedError();
+    return switch (amount >= 0) {
+      true => '+$amount',
+      false => '-$amount',
+    };
   }
 
   @override
   String getIcon() {
-    // TODO: implement getIcon
-    throw UnimplementedError();
+    return category.value!.icon ?? '';
   }
 
   @override
   String getLabel() {
-    // TODO: implement getLabel
-    throw UnimplementedError();
+    return category.value!.name;
   }
 }
