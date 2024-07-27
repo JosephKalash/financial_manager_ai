@@ -82,7 +82,7 @@ class _PlaceHolderImage extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: Image.asset(
-        asset ?? Assets.assetsImagesPerson,
+        asset ?? '',
         cacheHeight: max(height?.toInt() ?? 0, 105),
         cacheWidth: max(height?.toInt() ?? 0, 105),
       ).clipRRect(all: 100),

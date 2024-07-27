@@ -13,7 +13,7 @@ class CustomBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ?? () => context.popRoute(),
+      onTap: onTap ?? () => context.maybePop(),
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -29,7 +29,7 @@ class CustomBackButton extends StatelessWidget {
         child: Transform.flip(
           flipX: !AppLanguage.isLTR,
           child: SvgPicture.asset(
-            isCancel ? Assets.assetsIconsCancel : Assets.assetsIconsBack,
+            '',
             height: (size ?? 22).w,
           ).padding(all: 6),
         ),

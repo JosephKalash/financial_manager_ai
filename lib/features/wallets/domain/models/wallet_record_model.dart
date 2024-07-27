@@ -6,6 +6,7 @@ import 'package:isar/isar.dart';
 part 'wallet_record_model.g.dart';
 
 @collection
+// ignore: must_be_immutable
 class WalletRecordModel extends MoneyRecordABS {
   double amountOnRecordTime;
   WalletRecordModel({

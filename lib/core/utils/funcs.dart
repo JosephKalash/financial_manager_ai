@@ -44,27 +44,6 @@ void plog(dynamic value) => kDebugMode ? Logger().d(value) : null;
 void eplog(dynamic value) => kDebugMode ? Logger().e(value) : null;
 void wplog(dynamic value) => kDebugMode ? Logger().w(value) : null;
 
-TimeOfDay parseStringToTime(String time) =>
-    TimeOfDay(hour: int.parse(time.split(':').first), minute: int.parse(time.split(':')[1]));
-
-TimeOfDay? dateToTime(DateTime? date) => date == null ? null : TimeOfDay.fromDateTime(date);
-
-TimeOfDay? parseStringToTimeOr(String? time) =>
-    time == null ? null : TimeOfDay(hour: int.parse(time.split(':').first), minute: int.parse(time.split(':')[1]));
-
-double timeToDouble(TimeOfDay? time) {
-  if (time == null) return 0;
-  return time.hour + time.minute / 60;
-}
-
-DateTime? parseDateOr(String? date) => date == null ? null : DateTime.tryParse(date)?.toLocal();
-DateTime parseDate(String date) => DateTime.parse(date).toLocal();
-String? dateToString(DateTime? date) => date?.toUtc().toIso8601String();
-
-String formatDate(DateTime date, {String? pattern}) => DateFormat(pattern ?? 'd/M/y').format(date);
-String? formatDateOr(DateTime? date, {String? pattern}) =>
-    date == null ? null : DateFormat(pattern ?? 'd/M/y').format(date);
-
 String getNameTr(String? nameEn, String? nameAr) => (AppLanguage.isLTR ? nameEn ?? nameAr : nameAr ?? nameEn) ?? '';
 
 showToast({context, required String message, List<String>? args}) {
@@ -89,34 +68,6 @@ void onPaginate(ScrollController scrollController, VoidCallback call) {
 
 
 
-
-String getDateFormatLabel(DateTime date) {
-  final now = DateTime.now();
-  final today = DateTime(now.year, now.month, now.day);
-  final yesterday = today.subtract(const Duration(days: 1));
-
-  if (date.year == today.year && date.month == today.month && date.day == today.day) {
-    return 'today'.tr();
-  } else if (date.year == yesterday.year && date.month == yesterday.month && date.day == yesterday.day) {
-    return 'yesterday'.tr();
-  } else {
-    return '${date.day}/${date.month}/${date.year}';
-  }
-}
-
-String getDateFormatStartWithTime(DateTime date, BuildContext context, {bool withYesterdayWord = false}) {
-  final now = DateTime.now();
-  final today = now;
-  final yesterday = today.subtract(const Duration(days: 1));
-
-  if (date.year == today.year && date.month == today.month && date.day == today.day) {
-    return TimeOfDay.fromDateTime(date).format(context);
-  } else if (date.year == yesterday.year && date.month == yesterday.month && date.day == yesterday.day) {
-    return withYesterdayWord ? '${'yesterday'.tr()} ' : TimeOfDay.fromDateTime(date).format(context);
-  } else {
-    return '${date.day}/${date.month}/${date.year}';
-  }
-}
 
 ///check if there is internet connection berfore execut the function
 

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import './funcs.dart';
+import 'package:ai_financial_manager/core/utils/date_utlils.dart';
 
 import 'size_config.dart';
 
@@ -35,13 +35,14 @@ extension StrEx on String {
 extension DateEx2 on DateTime? {
   // String get toDateString => '$year-$month-$day';
   DateTime? get date => this == null ? null : DateTime(this!.year, this!.month, this!.day);
-  String? format([String? pattern]) => formatDateOr(this, pattern: pattern);
+  String? format([String? pattern]) => DateUtils.formatDateOr(this, pattern: pattern);
   String? get dateToIso => this?.toUtc().toIso8601String();
 }
 
 extension DateEx on DateTime {
   String get toDateString => '$year-$month-$day';
-  String format([String? pattern]) => formatDate(this, pattern: pattern);
+  String format([String? pattern]) => DateUtils.formatDate(this, pattern: pattern);
+  bool isSameDate(DateTime date) => DateUtils.isSameDate(this, date);
 }
 
 extension EnumExtension on Enum {

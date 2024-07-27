@@ -7,6 +7,7 @@ import 'wallet_model.dart';
 part 'transfer_model.g.dart';
 
 @collection
+// ignore: must_be_immutable
 class TransferModel extends MoneyRecordABS {
   var fromWallet = IsarLink<WalletModel>();
   var toWallet = IsarLink<WalletModel>();
