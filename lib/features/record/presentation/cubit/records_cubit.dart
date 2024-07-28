@@ -1,6 +1,8 @@
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
+import 'package:ai_financial_manager/core/utils/extensions.dart';
 import 'package:ai_financial_manager/features/plans/domain/models/plan_record_model.dart';
 import 'package:ai_financial_manager/features/record/domain/models/record_model.dart';
+import 'package:ai_financial_manager/features/record/domain/models/recurring_model.dart';
 import 'package:ai_financial_manager/features/record/domain/record_repo.dart';
 import 'package:ai_financial_manager/features/wallets/domain/models/transfer_model.dart';
 import 'package:ai_financial_manager/features/wallets/domain/models/wallet_record_model.dart';
@@ -19,6 +21,7 @@ class RecordsCubit extends Cubit<RecordsState> {
 
   Map<DateTime, List<MoneyRecordABS>> allRecords = {};
 
+  List<RecurringModel> recurrings = [];
   List<RecordModel> records = [];
   List<WalletRecordModel> walletRecords = [];
   List<TransferModel> transferRecords = [];
@@ -29,10 +32,47 @@ class RecordsCubit extends Cubit<RecordsState> {
     for (var record in allList) {
       allRecords[record.createdAt]!.add(record);
     }
-    emit(RecordsState.udpated(allRecords));
+    emit(const RecordsState.updated());
   }
 
-  void buildRecordsListner() async {
+  void addRecord(RecordModel record) {
+    _repo.addRecord(record);
+  }
+
+  void addTransfer(TransferModel transfer) {
+    _repo.addTransfer(transfer);
+  }
+
+  void addRecurring(RecurringModel recurring) {
+    if (recurring.startDate.isSameDate(DateTime.now())) {
+      addRecord(RecordModel(amount: recurring.amount, isRecurring: true));
+      recurring.repeatedTimes++;
+    }
+    _repo.addRecurring(recurring);
+  }
+
+  void setupListners() async {
+    await Future.wait([
+      buildRecordsListner(),
+      buildPlanRecordsListner(),
+      buildWalletRecordsListner(),
+      buildTransfersListner(),
+    ]);
+    emit(const RecordsState.updated());
+  }
+
+  void buildRecurringListner() async {
+    final data = await _repo.getRecurringStream();
+    recurrings = data.$1;
+    emit(const RecordsState.updated());
+    final stream = data.$2.watch();
+    stream.listen((records) {
+      recurrings = records;
+      emit(const RecordsState.updated());
+    });
+  }
+
+  Future buildRecordsListner() async {
     final data = await _repo.getRecordsStream();
     records = data.$1;
     final stream = data.$2.watch();
@@ -42,7 +82,7 @@ class RecordsCubit extends Cubit<RecordsState> {
     });
   }
 
-  void buildPlanRecordsListner() async {
+  Future buildPlanRecordsListner() async {
     final data = await _repo.getPlanRecordsStream();
     planRecords = data.$1;
     final stream = data.$2.watch();
@@ -52,7 +92,7 @@ class RecordsCubit extends Cubit<RecordsState> {
     });
   }
 
-  void buildWalletRecordsListner() async {
+  Future buildWalletRecordsListner() async {
     final data = await _repo.getWalletRecordsStream();
     walletRecords = data.$1;
     final stream = data.$2.watch();
@@ -62,7 +102,7 @@ class RecordsCubit extends Cubit<RecordsState> {
     });
   }
 
-  void buildTransfersListner() async {
+  Future buildTransfersListner() async {
     final data = await _repo.getTransfersStream();
     transferRecords = data.$1;
     final stream = data.$2.watch();

@@ -3,7 +3,7 @@ import 'package:isar/isar.dart';
 import '../../../wallets/domain/models/wallet_model.dart';
 import 'category_model.dart';
 
-part 'recuring_model.g.dart';
+part 'recurring_model.g.dart';
 
 enum RecurringStatus {
   running,

@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:isar/isar.dart';
 
 import '../errors/failures.dart';
 
 typedef FutureEither<T> = Future<Either<Failure, T>>;
+typedef QueryType<T> = QueryBuilder<T, T, QQueryProperty>;
 
 abstract class Serializer {
   Map<String, dynamic> toJson();

@@ -2,7 +2,7 @@ import 'package:ai_financial_manager/features/plans/domain/models/plan_model.dar
 import 'package:ai_financial_manager/features/plans/domain/models/plan_record_model.dart';
 import 'package:ai_financial_manager/features/record/domain/models/category_model.dart';
 import 'package:ai_financial_manager/features/record/domain/models/record_model.dart';
-import 'package:ai_financial_manager/features/record/domain/models/recuring_model.dart';
+import 'package:ai_financial_manager/features/record/domain/models/recurring_model.dart';
 import 'package:ai_financial_manager/features/wallets/domain/models/transfer_model.dart';
 import 'package:ai_financial_manager/features/wallets/domain/models/wallet_model.dart';
 import 'package:ai_financial_manager/features/wallets/domain/models/wallet_record_model.dart';
