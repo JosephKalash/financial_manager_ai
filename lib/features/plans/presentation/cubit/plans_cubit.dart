@@ -20,5 +20,4 @@ class PlansCubit extends Cubit<PlansState> {
     params.reset();
   }
 
-  Future<void> getPlans() async {}
 }

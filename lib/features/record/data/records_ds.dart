@@ -9,14 +9,17 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
 abstract class IRecordsDS {
-  Future<(List<RecordModel>, QueryType<RecordModel>)> getRecordsStream();
-  Future<(List<TransferModel>, QueryType<TransferModel>)> getTransfersStream();
-  Future<(List<WalletRecordModel>, QueryType<WalletRecordModel>)> getWalletRecordsStream();
-  Future<(List<PlanRecordModel>, QueryType<PlanRecordModel>)> getPlanRecordsStream();
-  Future<(List<RecurringModel>, QueryType<RecurringModel>)> getRecurringStream();
+  Future<(List<RecordModel>, QuerySorted<RecordModel>)> getRecordsStream();
+  Future<(List<TransferModel>, QuerySorted<TransferModel>)> getTransfersStream();
+  Future<(List<WalletRecordModel>, QuerySorted<WalletRecordModel>)> getWalletRecordsStream();
+  Future<(List<PlanRecordModel>, QuerySorted<PlanRecordModel>)> getPlanRecordsStream();
+  Future<(List<RecurringModel>, QuerySorted<RecurringModel>)> getRecurringStream();
   void addRecord(RecordModel record);
   void addTransfer(TransferModel transfer);
   void addRecurring(RecurringModel recurring);
+  void deleteRecord(int id);
+  void deleteTransfer(int id);
+  void deleteRecurring(int id);
 }
 
 @LazySingleton(as: IRecordsDS)
@@ -24,28 +27,28 @@ class RecordsDSImpl implements IRecordsDS {
   RecordsDSImpl();
 
   @override
-  Future<(List<PlanRecordModel>, QueryType<PlanRecordModel>)> getPlanRecordsStream() async {
+  Future<(List<PlanRecordModel>, QuerySorted<PlanRecordModel>)> getPlanRecordsStream() async {
     final query = DB.isar.planRecordModels.where().sortByCreatedAtDesc();
     final data = await query.findAll();
     return (data, query);
   }
 
   @override
-  Future<(List<RecordModel>, QueryType<RecordModel>)> getRecordsStream() async {
+  Future<(List<RecordModel>, QuerySorted<RecordModel>)> getRecordsStream() async {
     final query = DB.isar.recordModels.where().sortByCreatedAtDesc();
     final data = await query.findAll();
     return (data, query);
   }
 
   @override
-  Future<(List<TransferModel>, QueryType<TransferModel>)> getTransfersStream() async {
+  Future<(List<TransferModel>, QuerySorted<TransferModel>)> getTransfersStream() async {
     final query = DB.isar.transferModels.where().sortByCreatedAtDesc();
     final data = await query.findAll();
     return (data, query);
   }
 
   @override
-  Future<(List<WalletRecordModel>, QueryType<WalletRecordModel>)> getWalletRecordsStream() async {
+  Future<(List<WalletRecordModel>, QuerySorted<WalletRecordModel>)> getWalletRecordsStream() async {
     final query = DB.isar.walletRecordModels.where().sortByCreatedAtDesc();
     final data = await query.findAll();
     return (data, query);
@@ -67,9 +70,25 @@ class RecordsDSImpl implements IRecordsDS {
   }
 
   @override
-  Future<(List<RecurringModel>, QueryType<RecurringModel>)> getRecurringStream() async {
+  Future<(List<RecurringModel>, QuerySorted<RecurringModel>)> getRecurringStream() async {
     final query = DB.isar.recurringModels.where();
     final data = await query.findAll();
     return (data, query);
+  }
+
+  @override
+  void deleteRecord(int id) {
+    DB.isar.writeTxn(() async => DB.isar.recordModels.delete(id));
+  }
+
+  @override
+  void deleteRecurring(int id) {
+    DB.isar.writeTxn(() async => DB.isar.recurringModels.delete(id));
+  }
+
+  @override
+  void deleteTransfer(int id) {
+    DB.isar.writeTxn(() => DB.isar.transferModels.delete(id));
+    DB.isar.writeTxn(() => DB.isar.transferModels.delete(id));
   }
 }

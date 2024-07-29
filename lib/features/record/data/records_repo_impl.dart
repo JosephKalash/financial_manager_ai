@@ -15,22 +15,22 @@ class RecordsRepoImpl implements IRecordsRepo {
   final IRecordsDS _ds;
 
   @override
-  Future<(List<PlanRecordModel>, QueryType<PlanRecordModel>)> getPlanRecordsStream() {
+  Future<(List<PlanRecordModel>, QuerySorted<PlanRecordModel>)> getPlanRecordsStream() {
     return _ds.getPlanRecordsStream();
   }
 
   @override
-  Future<(List<RecordModel>, QueryType<RecordModel>)> getRecordsStream() {
+  Future<(List<RecordModel>, QuerySorted<RecordModel>)> getRecordsStream() {
     return _ds.getRecordsStream();
   }
 
   @override
-  Future<(List<TransferModel>, QueryType<TransferModel>)> getTransfersStream() {
+  Future<(List<TransferModel>, QuerySorted<TransferModel>)> getTransfersStream() {
     return _ds.getTransfersStream();
   }
 
   @override
-  Future<(List<WalletRecordModel>, QueryType<WalletRecordModel>)> getWalletRecordsStream() {
+  Future<(List<WalletRecordModel>, QuerySorted<WalletRecordModel>)> getWalletRecordsStream() {
     return _ds.getWalletRecordsStream();
   }
 
@@ -50,7 +50,22 @@ class RecordsRepoImpl implements IRecordsRepo {
   }
 
   @override
-  Future<(List<RecurringModel>, QueryType<RecurringModel>)> getRecurringStream() {
+  Future<(List<RecurringModel>, QuerySorted<RecurringModel>)> getRecurringStream() {
     return _ds.getRecurringStream();
+  }
+
+  @override
+  void deleteRecord(int id) {
+    return _ds.deleteRecord(id);
+  }
+
+  @override
+  void deleteRecurring(int id) {
+    return _ds.deleteRecurring(id);
+  }
+
+  @override
+  void deleteTransfer(int id) {
+    return _ds.deleteTransfer(id);
   }
 }

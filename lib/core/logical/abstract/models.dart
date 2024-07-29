@@ -4,7 +4,8 @@ import 'package:isar/isar.dart';
 import '../errors/failures.dart';
 
 typedef FutureEither<T> = Future<Either<Failure, T>>;
-typedef QueryType<T> = QueryBuilder<T, T, QQueryProperty>;
+typedef QuerySorted<T> = QueryBuilder<T, T, QQueryProperty>;
+typedef QueryWhere<T> = QueryBuilder<T, T, QWhere>;
 
 abstract class Serializer {
   Map<String, dynamic> toJson();

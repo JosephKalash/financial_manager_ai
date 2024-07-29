@@ -11,7 +11,7 @@ import 'package:isar/isar.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 
-abstract final class DB {
+ mixin class DB {
   static late Isar isar;
   static Future<void> initDB() async {
     final dir = await getApplicationDocumentsDirectory();
