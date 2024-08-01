@@ -46,6 +46,7 @@ dependencies:
   firebase_vertexai: ^0.1.1
   equatable: ^2.0.5
   uuid: ^4.4.2
+  bottom_navy_bar: ^6.1.0
 
 dev_dependencies:
   analyzer:
