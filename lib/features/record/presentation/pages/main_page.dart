@@ -15,9 +15,18 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   TabsRouter? tabsRouter;
   final fab = [
-    FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
-    FloatingActionButton(onPressed: () {}, child: const Icon(Icons.wallet)),
-    FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+    FABBuilderWidget(
+      iconString: Assets.assetsIconsRecords,
+      onTap: () {},
+    ),
+    FABBuilderWidget(
+      iconString: Assets.assetsIconsWallets,
+      onTap: () {},
+    ),
+    FABBuilderWidget(
+      iconString: Assets.assetsIconsPlans,
+      onTap: () {},
+    ),
     const SizedBox(),
   ];
   @override
@@ -41,8 +50,28 @@ class _MainPageState extends State<MainPage> {
           body: child,
           floatingActionButton: const SizedBox(),
           bottomNavigationBar: CustomBottomNavBar(tabsRouter: tabsRouter),
-        ).expanded();
+        );
       },
+    );
+  }
+}
+
+class FABBuilderWidget extends StatelessWidget {
+  const FABBuilderWidget({
+    super.key,
+    required this.iconString,
+    required this.onTap,
+  });
+  final String iconString;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: onTap,
+      child: SvgPicture.asset(
+        iconString,
+      ),
     );
   }
 }
@@ -61,13 +90,15 @@ class CustomBottomNavBar extends StatelessWidget {
       selectedIndex: tabsRouter?.activeIndex ?? 0,
       showElevation: true, // use this to remove appBar's elevation
       onItemSelected: (index) => tabsRouter?.setActiveIndex(index),
+      itemPadding: EdgeInsets.zero,
+      itemCornerRadius: 25,
       items: [
-        _getItem(icon: 'Assets', title: 'records', activeColor: Colors.red),
-        _getItem(icon: 'assets', title: 'wallets', activeColor: Colors.purpleAccent),
-        _getItem(icon: 'assets', title: 'plans', activeColor: Colors.pink),
-        _getItem(icon: 'settings', title: 'settings', activeColor: Colors.blue),
+        _getItem(icon: Assets.assetsIconsRecords, title: 'records', activeColor: AppColors.primary),
+        _getItem(icon: Assets.assetsIconsWallets, title: 'wallets', activeColor: AppColors.primary),
+        _getItem(icon: Assets.assetsIconsPlans, title: 'plans', activeColor: AppColors.primary),
+        _getItem(icon: Assets.assetsIconsSettings, title: 'settings', activeColor: AppColors.primary),
       ],
-    ).clipRRect(topLeft: 10, topRight: 10);
+    ).clipRRect(all: 20).padding(horizontal: 30, vertical: 20);
   }
 
   _getItem({
@@ -76,8 +107,12 @@ class CustomBottomNavBar extends StatelessWidget {
     required String title,
   }) {
     return BottomNavyBarItem(
-      icon: SvgPicture.asset(icon),
-      title: Text(title),
+      icon: SvgPicture.asset(icon, width: 28.w).padding(left: 2),
+      title: Text(
+        title,
+        style: infoStyle(color: Colors.black),
+        textAlign: TextAlign.center,
+      ).center(),
       activeColor: activeColor,
     );
   }

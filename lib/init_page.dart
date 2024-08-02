@@ -8,7 +8,7 @@ import 'core/utils/lang.dart';
 import 'core/utils/size_config.dart';
 import 'features/authentication/presentation/cubit/auth_cubit.dart';
 
-@RoutePage() 
+@RoutePage()
 class InitPage extends StatefulWidget {
   const InitPage();
   @override
@@ -21,23 +21,23 @@ class _InitPageState extends State<InitPage> {
     super.initState();
     final cubit = context.read<AuthCubit>();
     cubit.tryLoginUser();
-    AppLanguage.init(context);
-    SizeConfig.init(context);
   }
 
   @override
   Widget build(BuildContext context) {
+    AppLanguage.init(context);
+    SizeConfig.init(context);
     return Scaffold(
       body: BlocListener<AuthCubit, AuthState>(
         listener: (_, state) {
           state.maybeWhen(
             logout: () {
-              context.replaceRoute(const LoginRoute());
+              context.replaceRoute(const MainRoute());
               FlutterNativeSplash.remove();
             },
             authenticated: () async {
               FlutterNativeSplash.remove();
-              // context.replaceRoute(const HomeRoute(children: [ChatsRoute()]));
+              context.replaceRoute(const MainRoute());
             },
             orElse: () {},
           );

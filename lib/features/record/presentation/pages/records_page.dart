@@ -11,8 +11,8 @@ class RecordsPage extends StatefulWidget {
 class _RecordsPageState extends State<RecordsPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [widget],
+    return const Column(
+      children: [],
     );
   }
 }
