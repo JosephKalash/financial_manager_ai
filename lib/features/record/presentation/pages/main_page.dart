@@ -1,9 +1,10 @@
 import 'package:ai_financial_manager/core/UI/router/router.dart';
 import 'package:ai_financial_manager/index.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../widgets/bottom_nav_bar.dart';
 
 @RoutePage()
 class MainPage extends StatefulWidget {
@@ -47,8 +48,9 @@ class _MainPageState extends State<MainPage> {
           // appBar: const CustomAppBar(
           //     // leadingWidget: ,
           //     ),
-          body: child,
-          floatingActionButton: const SizedBox(),
+          body: child.safeArea().padding(horizontal: 20.w),
+          floatingActionButton: fab[tabsRouter!.activeIndex],
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           bottomNavigationBar: CustomBottomNavBar(tabsRouter: tabsRouter),
         );
       },
@@ -69,10 +71,13 @@ class FABBuilderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onTap,
+      backgroundColor: AppColors.white,
+      elevation: 1,
       child: SvgPicture.asset(
         iconString,
+        // colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
       ),
-    );
+    ).paddingDirectional(end: 10).translate(offset: const Offset(0, 10));
   }
 }
 
@@ -91,14 +96,16 @@ class CustomBottomNavBar extends StatelessWidget {
       showElevation: true, // use this to remove appBar's elevation
       onItemSelected: (index) => tabsRouter?.setActiveIndex(index),
       itemPadding: EdgeInsets.zero,
-      itemCornerRadius: 25,
+      itemCornerRadius: 14,
+      borderRadius: 18.radius,
+      containerHeight: 60.h,
       items: [
         _getItem(icon: Assets.assetsIconsRecords, title: 'records', activeColor: AppColors.primary),
         _getItem(icon: Assets.assetsIconsWallets, title: 'wallets', activeColor: AppColors.primary),
         _getItem(icon: Assets.assetsIconsPlans, title: 'plans', activeColor: AppColors.primary),
         _getItem(icon: Assets.assetsIconsSettings, title: 'settings', activeColor: AppColors.primary),
       ],
-    ).clipRRect(all: 20).padding(horizontal: 30, vertical: 20);
+    ).padding(horizontal: 26, vertical: 20);
   }
 
   _getItem({
@@ -111,7 +118,6 @@ class CustomBottomNavBar extends StatelessWidget {
       title: Text(
         title,
         style: infoStyle(color: Colors.black),
-        textAlign: TextAlign.center,
       ).center(),
       activeColor: activeColor,
     );

@@ -26,5 +26,8 @@
     "delete_account": "Delete account",
     "delete_account_and_data": "delete your account and all associated data",
     "without_+": "Without (+)",
+    "balance": "Balance:",
+    "expenses": "Expenses",
+    "incomes": "Incomes",
     "profile_photo": "Profile photo"
 }

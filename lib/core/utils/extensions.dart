@@ -30,6 +30,7 @@ extension StrNullEx on String? {
 
 extension StrEx on String {
   String get t => this.tr();
+  String get toOneDecimal => num.tryParse(this)?.toStringAsFixed(1).replaceAll(_decimalZeroPoint, '') ?? '';
 }
 
 extension DateEx2 on DateTime? {

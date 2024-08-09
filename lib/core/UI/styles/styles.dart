@@ -42,12 +42,12 @@ TextStyle smallTextStyle({
 TextStyle titleStyle({
   Color? color,
   double? size,
-  bool isBold = false,
+  bool isBold = true,
   FontWeight weight = FontWeight.normal,
 }) {
   return TextStyle(
     color: color ?? AppColors.primary,
-    fontSize: size ?? FontSize.xl.toDouble(),
+    fontSize: size ?? FontSize.xxl.toDouble(),
     fontWeight: isBold ? FontWeight.bold : weight,
   );
 }
