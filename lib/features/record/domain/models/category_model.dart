@@ -7,12 +7,12 @@ class CategoryModel {
   Id id = Isar.autoIncrement;
   String name;
   String? icon;
-  bool isExpenses;
+  bool isExpences;
   float? defaultAmount;
 
   CategoryModel({
     required this.name,
-    required this.isExpenses,
+    required this.isExpences,
     this.icon,
     this.defaultAmount,
   });
