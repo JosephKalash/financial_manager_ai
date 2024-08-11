@@ -72,7 +72,7 @@ class FABBuilderWidget extends StatelessWidget {
     return FloatingActionButton(
       onPressed: onTap,
       backgroundColor: AppColors.white,
-      elevation: 1,
+      elevation: .5,
       child: SvgPicture.asset(
         iconString,
         // colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),

@@ -71,11 +71,11 @@ class ValueHolderWidget extends StatelessWidget {
         children: [
           TextTr(
             title,
-            style: labelStyle(color: AppColors.white, isBold: true),
+            style: infoStyle(color: AppColors.white, isBold: true),
           ),
           Text(
             formatCurrency(value),
-            style: titleStyle(color: AppColors.white, size: 28),
+            style: labelStyle(color: AppColors.white, size: 28, isBold: true),
           ).flexible(),
         ],
       ),

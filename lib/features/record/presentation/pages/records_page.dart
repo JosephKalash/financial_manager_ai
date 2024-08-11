@@ -47,7 +47,7 @@ class _RecordsPageState extends State<RecordsPage> {
       children: [
         20.h.hSpace,
         BalanceWidget(balance: balance),
-        20.h.hSpace,
+        10.h.hSpace,
         ExpensesIncomesWidget(expenses: expenses, incomes: incomes),
         30.h.hSpace,
         RecordsList(records: records),

@@ -1,13 +1,11 @@
-
-
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
 import 'package:ai_financial_manager/features/record/domain/models/record_model.dart';
 import 'package:ai_financial_manager/features/record/records_utils.dart';
 import 'package:ai_financial_manager/index.dart';
 import 'package:flutter/material.dart';
 
-class DateAnalysisWidget extends StatelessWidget {
-  const DateAnalysisWidget({
+class DateTotalAmountPerDayWidget extends StatelessWidget {
+  const DateTotalAmountPerDayWidget({
     super.key,
     required this.date,
     required this.records,
@@ -27,7 +25,7 @@ class DateAnalysisWidget extends StatelessWidget {
         ),
         10.w.wSpace,
         Text(
-          date.format('EEE, m/d'),
+          date.format('EEE, d/M'),
           style: labelStyle(isBold: true, color: AppColors.black),
         ),
         const Spacer(),

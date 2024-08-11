@@ -1,5 +1,6 @@
 import 'package:ai_financial_manager/core/services/db.dart';
 import 'package:ai_financial_manager/core/utils/date_utlils.dart';
+import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:uuid/uuid.dart';
 
@@ -25,8 +26,8 @@ abstract class MoneyRecordABS implements Comparable {
   String getAmount();
   String getLabel();
 
-  String getCreatedAt() {
-    return DateUtils.formatDate(createdAt, pattern: 'd/M/y');
+  String getCreatedAt(context) {
+    return TimeOfDay.fromDateTime(createdAt).format(context);
   }
 
   @override

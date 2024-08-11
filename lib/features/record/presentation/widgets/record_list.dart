@@ -4,7 +4,7 @@ import 'package:ai_financial_manager/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'date_analysis_widget.dart';
+import 'date_total_amount_per_day_widget.dart';
 
 class RecordsList extends StatelessWidget {
   const RecordsList({
@@ -24,7 +24,7 @@ class RecordsList extends StatelessWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            DateAnalysisWidget(date: date, records: records),
+            DateTotalAmountPerDayWidget(date: date, records: records),
             20.h.hSpace,
             RecordWidget(records: records, date: date)
           ],

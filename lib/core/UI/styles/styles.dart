@@ -86,7 +86,7 @@ TextStyle subLabelStyle({
 }) {
   return TextStyle(
     color: color ?? AppColors.black,
-    fontSize: size ?? FontSize.s.toDouble(),
+    fontSize: size ?? 12,
     fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
     height: height,
   );

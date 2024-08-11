@@ -1,5 +1,3 @@
-
-
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
 import 'package:ai_financial_manager/features/record/domain/models/record_model.dart';
 import 'package:ai_financial_manager/index.dart';
@@ -41,24 +39,33 @@ class RecordWidget extends StatelessWidget {
                 10.w.wSpace,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       record.getLabel(),
-                      style: labelStyle(isBold: true),
+                      style: infoStyle(isBold: true),
                     ),
-                    10.h.hSpace,
-                    if (record is RecordModel)
-                      Text(
-                        record.wallet.value!.name,
-                        style: infoStyle(color: AppColors.greyText),
-                      ),
+                    // 10.h.hSpace,
+                    Row(
+                      children: [
+                        Text(
+                          record.getCreatedAt(context),
+                          style: subLabelStyle(color: AppColors.greyText),
+                        ),
+                        if (record is RecordModel)
+                          Text(
+                            ' - ${record.wallet.value!.name}',
+                            style: subLabelStyle(color: AppColors.greyText),
+                          ),
+                      ],
+                    )
                   ],
                 ),
                 const Spacer(),
                 Text(
                   record.getAmount(),
-                  style: labelStyle(),
+                  style: infoStyle(isBold: true),
                 ),
               ],
             ),
