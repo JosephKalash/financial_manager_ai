@@ -28,6 +28,7 @@
     "without_+": "Without (+)",
     "balance": "Balance:",
     "expenses": "Expenses",
+    "transfer_label_": "From {} to {}",
     "incomes": "Incomes",
     "profile_photo": "Profile photo"
 }

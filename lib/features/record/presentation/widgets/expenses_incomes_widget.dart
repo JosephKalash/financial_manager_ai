@@ -1,5 +1,3 @@
-
-
 import 'package:ai_financial_manager/core/UI/widgets/custom_widgets/custom_widgets.dart';
 import 'package:ai_financial_manager/index.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -76,7 +74,7 @@ class ValueHolderWidget extends StatelessWidget {
             style: labelStyle(color: AppColors.white, isBold: true),
           ),
           Text(
-            NumberFormat.currency(decimalDigits: 1, symbol: '').format(value),
+            formatCurrency(value),
             style: titleStyle(color: AppColors.white, size: 28),
           ).flexible(),
         ],

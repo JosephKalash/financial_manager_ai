@@ -17,6 +17,18 @@ class Assets {
   /// assets/fonts/Poppins-SemiBold.ttf
   static const String assetsFontsPoppinsSemiBold = "assets/fonts/Poppins-SemiBold.ttf";
 
+  /// Assets for assetsIconsBankCard
+  /// assets/icons/bank_card.svg
+  static const String assetsIconsBankCard = "assets/icons/bank_card.svg";
+
+  /// Assets for assetsIconsCashWallet
+  /// assets/icons/cash_wallet.svg
+  static const String assetsIconsCashWallet = "assets/icons/cash_wallet.svg";
+
+  /// Assets for assetsIconsFood
+  /// assets/icons/food.svg
+  static const String assetsIconsFood = "assets/icons/food.svg";
+
   /// Assets for assetsIconsPlans
   /// assets/icons/plans.svg
   static const String assetsIconsPlans = "assets/icons/plans.svg";
@@ -25,9 +37,17 @@ class Assets {
   /// assets/icons/records.svg
   static const String assetsIconsRecords = "assets/icons/records.svg";
 
+  /// Assets for assetsIconsSalary
+  /// assets/icons/salary.svg
+  static const String assetsIconsSalary = "assets/icons/salary.svg";
+
   /// Assets for assetsIconsSettings
   /// assets/icons/settings.svg
   static const String assetsIconsSettings = "assets/icons/settings.svg";
+
+  /// Assets for assetsIconsTransfer
+  /// assets/icons/transfer.svg
+  static const String assetsIconsTransfer = "assets/icons/transfer.svg";
 
   /// Assets for assetsIconsWallets
   /// assets/icons/wallets.svg

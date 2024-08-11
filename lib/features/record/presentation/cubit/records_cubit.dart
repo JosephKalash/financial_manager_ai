@@ -31,7 +31,10 @@ class RecordsCubit extends Cubit<RecordsState> {
   updateAllRecords() {
     final allList = [...records, ...walletRecords, ...transferRecords, ...planRecords]..sort();
     for (var record in allList) {
-      allRecords[record.createdAt]!.add(record);
+      final date = record.createdAt;
+      final dayDate = DateTime(date.year, date.month, date.day);
+      if (!allRecords.containsKey(dayDate)) allRecords[dayDate] = [];
+      allRecords[dayDate]!.add(record);
     }
     emit(const RecordsState.updated());
   }

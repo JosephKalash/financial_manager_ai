@@ -1,4 +1,5 @@
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
+import 'package:ai_financial_manager/index.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:isar/isar.dart';
 
@@ -20,13 +21,12 @@ class TransferModel extends MoneyRecordABS {
 
   @override
   String getAmount() {
-    return amount.toStringAsFixed(2);
+    return formatCurrency(amount);
   }
 
   @override
   String getIcon() {
-    //TODO
-    return '';
+    return Assets.assetsIconsTransfer;
   }
 
   @override

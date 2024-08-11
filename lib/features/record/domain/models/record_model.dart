@@ -1,4 +1,5 @@
 import 'package:ai_financial_manager/features/wallets/domain/models/wallet_model.dart';
+import 'package:ai_financial_manager/index.dart';
 import 'package:isar/isar.dart';
 
 import 'category_model.dart';
@@ -19,12 +20,14 @@ class RecordModel extends MoneyRecordABS {
     super.createdAt_,
     super.note,
   });
+  @ignore
+  bool get isExpenses => category.value!.isExpences;
 
   @override
   String getAmount() {
-    return switch (amount >= 0) {
-      true => '+$amount',
-      false => '-$amount',
+    return switch (isExpenses) {
+      true => '-${formatCurrency(amount)}',
+      false => '+${formatCurrency(amount)}',
     };
   }
 

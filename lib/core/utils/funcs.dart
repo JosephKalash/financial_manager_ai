@@ -66,9 +66,6 @@ void onPaginate(ScrollController scrollController, VoidCallback call) {
   });
 }
 
-
-
-
 ///check if there is internet connection berfore execut the function
 
 String? getImageUrl(String? url) {
@@ -80,4 +77,16 @@ String? getImageUrl(String? url) {
 void copyToClipboard(String textToCopy) {
   Clipboard.setData(ClipboardData(text: textToCopy));
   showToast(message: 'copied_to_clipboard');
+}
+
+// Function to format currency
+String formatCurrency(double value) {
+  // Check if the number has a fractional part
+  if (value == value.roundToDouble()) {
+    // If there is no fractional part, show without decimals
+    return NumberFormat.currency(symbol: '', decimalDigits: 0).format(value);
+  } else {
+    // If there is a fractional part, show with decimals
+    return NumberFormat.currency(symbol: '').format(value);
+  }
 }

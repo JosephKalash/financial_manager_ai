@@ -46,7 +46,7 @@ TextStyle titleStyle({
   FontWeight weight = FontWeight.normal,
 }) {
   return TextStyle(
-    color: color ?? AppColors.primary,
+    color: color ?? AppColors.black,
     fontSize: size ?? FontSize.xxl.toDouble(),
     fontWeight: isBold ? FontWeight.bold : weight,
   );
@@ -71,7 +71,7 @@ TextStyle labelStyle({
   double? height,
 }) {
   return TextStyle(
-    color: color ?? AppColors.primary,
+    color: color ?? AppColors.black,
     fontSize: size ?? FontSize.l.toDouble(),
     fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
     height: height,
@@ -85,7 +85,7 @@ TextStyle subLabelStyle({
   double? height,
 }) {
   return TextStyle(
-    color: color ?? AppColors.primary,
+    color: color ?? AppColors.black,
     fontSize: size ?? FontSize.s.toDouble(),
     fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
     height: height,
