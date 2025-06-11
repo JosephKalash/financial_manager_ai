@@ -1,6 +1,6 @@
+import 'package:ai_financial_manager/core/UI/styles/radius.dart';
 import 'package:ai_financial_manager/core/UI/widgets/custom_widgets/custom_widgets.dart';
 import 'package:ai_financial_manager/index.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesIncomesWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class ExpensesIncomesWidget extends StatelessWidget {
               title: 'expenses',
               value: expenses,
             ).expanded(),
-            15.w.wSpace,
+            // 15.w.wSpace,
             ValueHolderWidget(
               color: AppColors.green,
               title: 'incomes',
@@ -32,14 +32,14 @@ class ExpensesIncomesWidget extends StatelessWidget {
             ).expanded(),
           ],
         ),
-        10.h.hSpace,
+        5.h.hSpace,
         LinearProgressIndicator(
           value: expenses / incomes,
           backgroundColor: AppColors.green,
           valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
-          minHeight: 2,
+          minHeight: 4,
           borderRadius: 25.radius,
-        ).opacity(.9),
+        ).opacity(.8),
       ],
     );
   }
@@ -62,7 +62,10 @@ class ValueHolderWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        borderRadius: 20.radius,
+        borderRadius: BorderRadius.horizontal(
+          right: title == 'incomes' ? const Radius.circular(RadiusSizes.l) : Radius.zero,
+          left: title == 'expenses' ? const Radius.circular(RadiusSizes.l) : Radius.zero,
+        ),
         color: color,
       ),
       child: Column(

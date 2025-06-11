@@ -53,7 +53,7 @@ class TemplateDialog extends StatelessWidget {
             ).padding().alignment(Alignment.center),
           18.verticalSpace,
           CustomOutLinedButton(
-            color: AppColors.red,
+            color: AppColors.primary,
             child: isLoading ? const CircularProgressIndicator.adaptive() : TextTr(actionLabel),
             onPressed: () {
               onAction();
@@ -63,7 +63,7 @@ class TemplateDialog extends StatelessWidget {
           if (secondActionLabel.notNull) 6.verticalSpace,
           if (secondActionLabel.notNull)
             CustomOutLinedButton(
-              color: AppColors.red,
+              color: AppColors.primary,
               child: isLoading ? const CircularProgressIndicator.adaptive() : TextTr(secondActionLabel!),
               onPressed: () {
                 onAction();

@@ -1,3 +1,4 @@
+import 'package:ai_financial_manager/core/UI/styles/radius.dart';
 import 'package:ai_financial_manager/core/logical/abstract/money_record_abs.dart';
 import 'package:ai_financial_manager/features/record/domain/models/record_model.dart';
 import 'package:ai_financial_manager/index.dart';
@@ -25,7 +26,7 @@ class RecordWidget extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
               color: AppColors.white,
-              borderRadius: 12.radius,
+              borderRadius: RadiusSizes.m.radius,
             ),
             child: Row(
               children: [
@@ -34,7 +35,7 @@ class RecordWidget extends StatelessWidget {
                   height: 30,
                 ).padding(all: 10).decorated(
                       color: AppColors.backgroundColor,
-                      borderRadius: 8.radius,
+                      borderRadius: RadiusSizes.s.radius,
                     ),
                 10.w.wSpace,
                 Column(
